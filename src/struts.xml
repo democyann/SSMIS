@@ -16,7 +16,7 @@
 
 	<!-- <include file="example.xml"/> -->
 	
-	<include file="cn/bddy/shidawei17/**/struts*.xml"/>
+	<include file="com/student/sys/**/struts*.xml"/>
 	
 	<!-- Add packages here -->
 

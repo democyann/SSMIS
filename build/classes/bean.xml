@@ -39,8 +39,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<!-- 设置所有持久化实体 -->
-				<value>cn.bddy.shidawei17.studentMis.pojo.Student</value>
-				<value>cn.bddy.shidawei17.studentMis.pojo.Grade</value>
+				<value>com.student.sys.test</value>
 			</list>
 		</property>
 
@@ -79,15 +78,9 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" />
 	</aop:config>
 
-	<bean id="gradeService" class="cn.bddy.shidawei17.studentMis.service.GradeService"
+	<bean id="gradeService" class="com.student.sys.test.Service"
 		p:gradeDao-ref="gradeDao"></bean>
-	<bean id="gradeDao" class="cn.bddy.shidawei17.studentMis.dao.impl.GradeDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	
-	<bean id="studentService" class="cn.bddy.shidawei17.studentMis.service.StudentService"
-		p:studentDao-ref="studentDao"></bean>
-	<bean id="studentDao" class="cn.bddy.shidawei17.studentMis.dao.impl.StudentDaoImpl">
+	<bean id="gradeDao" class="com.student.sys.test.dao.impl.GradeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>
