@@ -1,0 +1,178 @@
+.x-panel-body{
+    margin: 0 auto;
+    width: 700px;
+}
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*标题部分*/
+.title {
+    width: 300px;
+    margin: 0 auto 10px;
+    letter-spacing: 20px;
+    border-bottom: 3px double #99bbe8;
+}
+.title h3{
+    font-size: 17px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*正文表格*/
+.x-panel-body table{
+    width: 100%;
+    border-collapse: collapse;
+}
+/*固定表格宽度*/
+.fixed-table{
+    table-layout: fixed;
+}
+
+.x-panel-body td,.x-panel-body th{
+    padding: 0;
+}
+/*table的完整td*/
+#fineTable td,#fineTable th,.fineTable td,.fineTable th{
+    font-size:13px;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+/*表格标签样式*/
+#fineTable .label-td,.fineTable .label-td{
+    text-align: center;
+    /*为什么要这样?*/
+    /*padding-left: 0;*/
+    font-weight: bold;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*正文表格之外的布局*/
+.head-div,.foot-div{
+    position: relative;
+    font-size: 13px;
+    padding: 6px 4px 4px;
+}
+
+.head-div .right-span,.foot-div .right-span{
+    position: absolute;
+    right: 4px;
+}
+
+.head-div .long-span{
+    display: inline-block;
+    width:500px
+}
+
+.head-div .label-span,.foot-div .label-span{
+    font-weight: bold;
+}
+
+.btn-div{
+    padding-top: 5px;
+    text-align: center;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*对齐*/
+.align-right{
+    text-align: right !important;
+}
+.align-left{
+    text-align: left !important;
+}
+.align-center{
+    text-align: center;
+}
+.align-v-center{
+    vertical-align: middle !important;
+}
+
+.spacing-half{
+    letter-spacing: 0.5em;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*没有内容的样式*/
+.empty-tr{
+    background-color: #ffe3ee;
+}
+.empty-tr td{
+    text-align:center;
+    /*font-weight: bold;*/
+    border:0 none;
+}
+.x-panel-body .sample-tr td{
+    height: 0 !important;
+    line-height: 0!important;
+    padding: 0 !important;
+    border-bottom: 0 none !important;
+    border-top: 0 none !important;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*表单元素样式*/
+select{
+    font-size: 100% !important;
+}
+/*金额*/
+.number-input,.currency-input{
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid #99bbe8;
+    margin-bottom: 2px;
+}
+/*普通文本*/
+.text-input{
+    border: none;
+    border-bottom: 1px solid #99bbe8;
+    margin-bottom: 2px;
+}
+/*日期*/
+.date-input{
+    width:100px;
+}
+#fineTable td textarea,.fineTable td textarea{
+    border: none;
+    width: 98%;
+}
+/*可编辑的span*/
+.contenteditable-span {
+    width: 100%;
+    word-break: break-all;
+    /*height: 100%;*/
+    display: inline-block;
+    min-height: 20px;
+}
+.contenteditable-span:focus{
+    outline: 0px solid;
+}
+.contenteditable-span p{
+    margin: 0;
+}
+/**/
+.underLine {
+    border: 0px;
+    border-bottom: 1px solid #99bbe8;
+}
+
+.noborder{
+    border: 0px;
+    margin: 0px;
+    text-align: right;
+}
+.noborder:focus {
+    border-bottom: 1px dashed #99be88;
+}
+
+/*其他------------------------------------------------------------------------------------------------------------------*/
+/*大写金额*/
+.upper-number{
+    color: green;
+    letter-spacing: 3px;
+}
+.na-span{
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}

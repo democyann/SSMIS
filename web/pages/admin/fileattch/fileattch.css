@@ -1,0 +1,44 @@
+#custom .uploadifyQueueItem {
+  background-color: #FFFFFF;
+  border: none;
+  border-bottom: 1px solid #E5E5E5;
+  font: 11px Verdana, Geneva, sans-serif;
+  margin-top: 0;
+  width: 500px;
+}
+#custom .uploadifyError {
+  background-color: #FDE5DD !important;
+  border: none !important;
+  border-bottom: 1px solid #FBCBBC !important;
+}
+#custom .uploadifyQueueItem .cancel {
+  float: right;
+}
+#custom-demo .uploadifyProgressBar {
+  background-color: #0099FF;
+  height: 3px;
+  width: 1px;
+}
+
+#systop_uploadUploader
+{
+    vertical-align: middle;
+}
+#systop-uploaded-files div img
+{
+    vertical-align: middle;
+
+}
+
+/*html5上传的按钮*/
+#uploadifive-systop_upload
+{
+    display: inline-block;
+    background: url("../../../scripts/uploadify/upload_b.gif") no-repeat;
+    vertical-align: middle;
+}
+
+#systop-file-queue
+{
+    width: 450px;
+}

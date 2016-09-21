@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+
+	<diskStore path="java.io.tmpdir/hibernate/mini-web" />
+
+	<!-- Cluster localhost setting 
+	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=localhost, port=40001,socketTimeoutMillis=2000" />
+    -->
+	<!-- Cluster peer host setting 
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual,
+ 		rmiUrls=//localhost:40002/org.springside.examples.miniweb.entity.user.User|//localhost:40002/org.springside.examples.miniweb.entity.user.User.roles|
+ 		        //localhost:40002/org.springside.examples.miniweb.entity.user.Role|//localhost:40002/org.springside.examples.miniweb.entity.user.Role.auths" />
+   -->
+   <!-- Another server's cluster setting -->
+   <!-- 
+   	<cacheManagerPeerListenerFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=localhost, port=40002,socketTimeoutMillis=2000" />
+   	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual,
+ 		rmiUrls=//localhost:40001/org.springside.examples.miniweb.entity.user.User|//localhost:40001/org.springside.examples.miniweb.entity.user.User.roles|
+ 		        //localhost:40001/org.springside.examples.miniweb.entity.user.Role|//localhost:40001/org.springside.examples.miniweb.entity.user.Role.auths"/>
+    -->
+    <!--
+    Default chache, the name is as same as the id of bean EhcacheFactoryBean,
+    that bean is defined in spring/applicationContext-base.xml
+    -->
+    <cache name="ehcache" maxElementsInMemory="10000" overflowToDisk="true"
+		eternal="true">
+		
+	</cache>
+	
+    <cache name="com.systop.common.modules.security.user.model.Resource" maxElementsInMemory="500" overflowToDisk="true"
+		eternal="true">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicatePuts=false,replicateUpdatesViaCopy=false" />
+	</cache>
+	<cache name="com.systop.common.modules.security.user.model.User" maxElementsInMemory="100" overflowToDisk="true"
+		eternal="true">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+			properties="replicatePuts=false,replicateUpdatesViaCopy=false" />
+	</cache>
+
+	
+	<!--
+		DefaultCache setting.
+		Modify ehcache-safe.xml for timeToIdleSeconds,timeToLiveSecond,diskExpiryThreadIntervalSeconds
+		Use ehcache-safe.xml default for maxElementsInMemory,maxElementsOnDisk,overflowToDisk,eternal Use ehcache default
+		for memoryStoreEvictionPolicy,diskPersistent,.
+	-->
+	<defaultCache maxElementsInMemory="10000" overflowToDisk="true" eternal="false"
+		memoryStoreEvictionPolicy="LRU" maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="600"
+		timeToIdleSeconds="3600" timeToLiveSeconds="7200" diskPersistent="false" />
+</ehcache>

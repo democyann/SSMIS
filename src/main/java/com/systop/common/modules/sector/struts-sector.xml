@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- Dept management -->
+	
+	<package name="admin.sector" extends="json" namespace="/admin/sector">
+		 <action name="index" class="sectorAction" method="index">
+		     <result name="index" type="dispatcher">/pages/admin/sector/index.jsp</result>
+		 </action>
+		 <action name="sectorTree" class="sectorAction" method="sectorTree">
+		     <result name="index" type="dispatcher">/pages/admin/sector/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">sectors</param>
+		    </result>
+		 </action>
+		 <action name="editNew" class="sectorAction" method="editNew">
+		     <result name="input">/pages/admin/sector/edit.jsp</result>
+		 </action>
+		 <action name="edit" class="sectorAction" method="edit">
+		     <result name="input">/pages/admin/sector/edit.jsp</result>
+		 </action>
+		 <action name="remove" class="sectorAction" method="remove">
+		     <result name="success" type="redirect">index.do</result>
+		     <result name="index" type="dispatcher">/pages/admin/sector/index.jsp</result>
+		 </action>
+		 <action name="save" class="sectorAction" method="save">
+		     <result name="success" type="redirect">index.do</result>
+		     <result name="input">/pages/admin/sector/edit.jsp</result>
+		 </action>
+		 <action name="updateDeptSerialNo" class="sectorAction" method="updateSerialNo">
+		     <result name="success" type="redirect">index.do</result>
+		 </action>
+		 <action name="getAllSchool" class="sectorAction" method="getAllSchool">
+		 	<result name="allSchool" type="json">
+		 		<param name="ignoreHierarchy">false</param>
+		        <param name="root">page</param>
+		 	</result>
+		 </action>
+	</package>
+	
+</struts>
+

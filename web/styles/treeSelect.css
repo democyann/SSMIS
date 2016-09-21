@@ -1,0 +1,15 @@
+.x-form-field-wrap .x-form-trigger{
+    display: none;
+}
+.x-form-field-wrap .x-form-text,.x-form-field,.x-combo-noedit,.x-form-focus {
+   border:1px #cecece solid;
+   margin: 0 0 0 0;
+   padding: 0 0 0 0;
+   background: #ffffff url(../images/icons/a_list.gif) no-repeat right;   
+}
+.x-combo-list {
+    border:1px solid #cecece;
+    background:#ffffff url(../images/icons/a_list.gif) no-repeat right; 
+    zoom:1;
+    overflow:hidden;
+}

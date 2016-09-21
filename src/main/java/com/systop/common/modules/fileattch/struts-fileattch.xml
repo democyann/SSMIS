@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="scos.fileattch" extends="json"  namespace="/fileattch">
+		<action name="*" class="fileAttchAction" method="{1}">
+			<result name="index">/pages/admin/fileattch/index.jsp</result> 
+			<result name="input">/pages/admin/fileattch/edit.jsp</result> 
+			<result name="success" type="redirect">index.do</result>
+			<result name="upload_success" type="json">
+		   		<param name="root">handleFileId</param>
+			</result>
+			<result name="ajax_delete" type="json">
+		   		<param name="root">optResult</param>
+			</result>
+			<result name="find_files" type="json">
+		   		<param name="root">optResult</param>
+			</result>
+		</action>
+	</package>
+</struts>

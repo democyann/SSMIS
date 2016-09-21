@@ -1,0 +1,21 @@
+
+.error-msg-div{
+    text-align: center;
+    font-size: 125%;;
+}
+.error-link-div{
+    padding-top: 20px;
+    text-align: center;
+}
+.error-link-div a{
+    color: red;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.main-div{
+    padding: 10px;
+}
+.error-img{
+    text-align:center;
+}

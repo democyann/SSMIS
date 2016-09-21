@@ -1,0 +1,363 @@
+html,body {
+	margin: 0px;
+	padding: 0px;
+	border: 0px none #ffffff;
+	font-size: 12px;
+	/*overflow: auto;*/
+	font-family: arial;
+	/*width: 100%;*/
+	/*height: 100%;*/
+}#r_tool    {
+	margin: 5px;
+	border-bottom: 1px solid #E8E8E8;
+	zoom: 1;
+}
+
+table,td,th {
+	font-size: 12px;
+	font-family: arial;
+}
+
+img {
+	border: none;
+}
+
+input[type="checkbox"] {
+	border: 0px !important;
+}
+
+.checkbox {
+	height: 14px;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+fieldset {
+	border: 1px solid #97b7e7;
+	padding: 2px;
+	margin: 10px;
+}
+
+fieldset legend {
+	font: normal 12px sans-serif;
+	color: #15428b;
+}
+
+.button {
+	font-size:12px;
+	height: 22px;
+	line-height:20px;
+	padding: 0px 5px 0px 5px;
+	border: 1px solid #99BBE8;
+	background: #d0def0
+		url(../scripts/extjs/resources/images/default/toolbar/bg.gif);
+}
+
+.tree-select {
+	background: #ffffff url(../images/exticons/drop-between.gif) no-repeat
+		right;
+}
+
+.dialog-select {
+	background: #ffffff url(../images/exticons/icon-grid.gif) no-repeat
+		right;
+}
+
+.clear-left-text {
+	border-right-color: #FFFFFF;
+	padding-right: 0px;
+}
+
+.clear-right-text {
+	width: 17px;
+	border-left-color: #FFFFFF;
+	padding-right: 0px;
+	margin-left: -7px;
+	background: #ffffff url(../images/grid/clear.png) no-repeat right;
+}
+
+input {
+	height: 25px;
+	line-height:23px;
+	border: 1px solid #CBCBCB;
+}
+
+
+input[type="checkbox"] {
+	border: 0;
+}
+
+select {
+	padding: 1px;
+	font-size: 12px;
+	margin: 2px;
+}
+
+textarea {
+	padding: 5px;
+	border: 1px solid #CBCBCB;
+	overflow: auto;
+	font-size: 12px;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF6600;
+	text-decoration: none;
+}
+
+a:actvie {
+	color: #FF6600;
+	text-decoration: none;
+}
+
+.color-red {
+	color: red;
+}
+
+.color-green {
+	color: green;
+}
+
+.color-blue {
+	color: blue;
+}
+
+/**/
+.x-panel-header {
+	font-size: 12px;
+	font-weight: bold;
+	font-family:sans-serif
+}
+
+.x-panel {
+	border-style: solid;
+	border-color: #99bbe8;
+	border-width: 0px;
+}
+
+.x-toolbar {
+	padding: 5px;
+	border-color: #a9bfd3;
+	border-style: solid;
+	border-left-width: 0px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-right-width: 0px;
+	display: block;
+	padding: 0px;
+	background: #d0def0
+		url(../scripts/extjs/resources/images/default/toolbar/bg.gif) repeat-x
+		top left;
+}
+
+.x-toolbar input{
+	height:20px;
+	padding-top: 2px;	
+}
+
+.x-toolbar .ytb-sep {
+	background-image:
+		url(../scripts/extjs/resources/images/default/grid/grid-blue-split.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	font-size: 1px;
+	height: 16px;
+	width: 4px;
+	overflow: hidden;
+	cursor: default;
+	margin: 0 2px 0;
+	border: 0;
+}
+
+.x-header {
+	padding: 5px 3px 4px 5px;
+	border: 0px;
+	border-bottom: 1px solid #a9bfd3;
+	overflow: hidden;
+	zoom: 1;
+	color: #15428b;
+	font: bold 12px tahoma, arial, verdana, sans-serif;
+	padding: 5px 3px 4px 5px;
+	line-height: 15px;
+	background: #d0def0
+		url(../scripts/extjs/resources/images/default/toolbar/bg.gif) repeat-x
+		top left;
+}
+
+.x-toolbar td,.x-toolbar span,.x-toolbar input,.x-toolbar div,.x-toolbar select,.x-toolbar label
+	{
+	white-space: nowrap;
+	font: normal 12px sans-serif;
+}
+
+.x-panel-body {
+	border: 0px solid #99bbe8;
+	border-top: 0 none;
+	overflow: hidden;
+	background: white;
+}
+
+.x-panel-header {
+	padding: 5px 3px 4px 5px;
+	border: 0px solid #99bbe8;
+	overflow: hidden;
+	zoom: 1;
+	color: #15428b;
+	font: bold 12px tahoma, arial, verdana, sans-serif;
+	padding: 5px 3px 4px 5px;
+	line-height: 15px;
+	background: #d0def0
+		url(../scripts/extjs/resources/images/default/toolbar/bg.gif) repeat-x
+		top left;
+}
+
+.x-view-header {
+	background-color: #DFE8F7;
+	height: 65px;
+	border: 1px solid #a9bfd3;
+}
+
+.x-panel-body p {
+	margin: 10px;
+	font-size: 12px;
+}
+
+.x-window-tbar {
+	margin-top: -1px;
+}
+
+.msg .x-box-mc {
+	font-size: 14px;
+}
+
+#msg-div {
+	position: absolute;
+	left: 35%;
+	top: 10px;
+	width: 250px;
+	z-index: 20000;
+}
+
+#fineTable,.fineTable{
+	margin:0px auto;
+	border-collapse:collapse;
+}
+
+#fineTable th,.fineTable th{
+	height:25px;
+	line-height: 25px;
+	border:1px solid #99BBE8;
+	background-color: #d0def0;
+}
+
+#fineTable td,.fineTable td{
+	height:25px;
+	line-height: 25px;
+	border:1px solid #99BBE8;
+	vertical-align: top;
+}
+#subTable,.subTable{
+	margin:0px auto;
+	border-collapse:collapse;
+}
+
+#subTable th,.subTable th{
+	height:25px;
+	line-height: 25px;
+	border:1px solid #99BBE8;
+	background-color: #d0def0;
+}
+
+#subTable td,.subTable td{
+	height:25px;
+	line-height: 25px;
+	border:1px solid #99BBE8;
+	vertical-align: top;
+}
+.viewPanel{
+	/*width:1000px;*/
+	margin: 10px;
+	background-color: #FFF;
+	border: 1px solid #99bbe8;
+	text-align: left;
+}
+
+/*fix*/
+#ec_headZone .tableRegion td,#ec_bodyZone .tableRegion td
+{
+    ms-box-sizing:border-box;
+    /*-moz-box-sizing:border-box;*/
+    box-sizing: border-box\9;
+}
+div#center
+{
+    height: 100%;
+}
+
+/*濞ｅ浂鍠楅娓哻濞戞搩鍙�妴鍐冀閼测晜鐣卞Δ鍌浢�锟�
+#ec_table_body input
+{
+    height: 14px;
+}
+/*濡ゅ倹顭囨鍥箹濠婂懎鍋嶉柡澶嗭拷濞嗭拷/
+.ext-search-tr
+{
+    display: none;
+}
+
+/*缂傚牆顭烽妴澶愬炊閸濆嫮鏆伴柛锔哄妼缁ㄦ娊鏌堥敓钘夘嚗閸繍妾靛銈囨暬濞间即寮垫径鎰紪濡増锚閹硷拷/
+#ec_toolbar
+{
+    /*position: fixed !important;*/
+    /*bottom: 0;*/
+}
+
+.x-toolbar select
+{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+/*濞村吋鑹鹃·鍐礉閻栨仧闁汇劌瀚伴悵顔芥償閿燂拷
+#ec_bodyZone .tableRegion td img
+{
+    height: 14px;
+    width:14px;
+}
+/*fx input 闁汇劌瀚伴悵顔芥償閿燂拷
+.x-toolbar
+{
+    /*height: 31px;
+
+}*/
+.x-toolbar input[type='text']
+{
+    height: 16px;
+}
+
+.main-div{
+    margin: 0 auto;
+}
+
+.x-panel-header .action-span{
+    position: absolute;
+    right:0.4em;
+}
+.r_nav_item {
+	margin: 0px 5px;
+	padding-right: 15px;
+	background-image: url("../images/icons/124.gif");
+	background-repeat: no-repeat;
+	background-position: right;
+	font-weight: bold;
+}

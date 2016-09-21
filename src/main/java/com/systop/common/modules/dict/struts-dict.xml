@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 字典管理 -->
+	<package name="admin.dict" extends="json" namespace="/admin/dict">
+		<action name="*" class="dictsAction" method="{1}">
+			<result name="exceptionIndex" type="redirect">adminIndex.do?exceptionFlag=1 </result>
+			<result name="index">/pages/admin/dict/index.jsp</result>
+			<result name="adminIndex">/pages/admin/dict/index.jsp</result>
+			<result name="input">/pages/admin/dict/edit.jsp</result>
+			<result name="success" type="redirect">adminIndex.do</result>
+			<result type="json" name="json">
+		        <param name="root">alist</param>
+		    </result>
+			<exception-mapping result="exceptionIndex"
+				exception="org.springframework.dao.DataIntegrityViolationException"></exception-mapping>
+		</action>
+	</package>
+
+</struts>
+

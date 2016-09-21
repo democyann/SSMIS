@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-lazy-init="true" default-autowire="byName">
+	<description>Spring公共配置文件</description>
+
+	<!--
+	Defines a properties file for dereferencing variables
+	-->
+	<!-- 定义受环境影响易变的变量 ，读取以下相关联的配置文件信息-->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+				<value>classpath:dao.properties</value>
+				<value>classpath:red5.properties</value>
+				<value>classpath:sms.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- jbpm4.4工作流 -->
+	<bean id="springHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper">
+		<property name="jbpmCfg" value="jbpm.cfg.xml"></property>
+	</bean>
+	<bean id="processEngine" factory-bean="springHelper" factory-method="createProcessEngine" />
+   
+	<!-- 数据源配置 -->
+	  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="${jdbc.driverClassName}" />
+	    <property name="url" value="${jdbc.url}" />
+	    <property name="username" value="${jdbc.username}" />
+	    <property name="password" value="${jdbc.password}" />
+	  </bean>
+
+	<!-- Hibernate配置 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+		    <list>
+		        <value>com.systop.**.model</value>
+		    </list>
+		</property>
+    	<property name="configLocation" value="classpath:jbpm.hibernate.cfg.xml" />
+    	<property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                	${hibernate.dialect}
+                </prop>
+                <!-- <prop key="hibernate.show_sql">
+                	${hibernate.show_sql}
+                </prop> -->
+                <prop key="hibernate.format_sql">
+                	${hibernate.format_sql}
+                </prop>
+                <prop key="hibernate.cache.use_query_cache">
+                    ${hibernate.cache.use_query_cache}
+                </prop>
+                <prop key="hibernate.cache.provider_class">
+                    ${hibernate.cache.provider_class}
+                </prop>
+                <prop key="hibernate.jdbc.batch_size">
+                    ${hibernate.jdbc.batch_size}
+                </prop>
+                <prop key="hibernate.jdbc.batch_size">
+                    ${hibernate.jdbc.batch_size}
+                </prop>
+                <prop key="hibernate.cache.provider_configuration_file_resource_path">
+                    ${hibernate.cache.provider_configuration_file_resource_path}
+                </prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>    
+				<prop key="hibernate.c3p0.max_size">20</prop>    
+				<prop key="hibernate.c3p0.min_size">5</prop>    
+				<prop key="hibernate.c3p0.timeout">120</prop>    
+				<prop key="hibernate.c3p0.max_statements">100</prop>    
+				<prop key="hibernate.c3p0.idle_test_period">120</prop>    
+				<prop key="hibernate.c3p0.acquire_increment">2</prop> 
+            </props>
+        </property>
+        
+	</bean>
+
+
+	<!-- 事务配置 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	</bean>
+	
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+	<context:component-scan base-package="com.systop" />
+	<context:component-scan base-package="datashare" />
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"></bean>
+	
+	<!-- Ehcache -->
+    <bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+       <property name="configLocation" value="classpath:ehcache.xml"></property>
+       <property name="cacheManagerName" value="ehCacheManager"></property>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+       <property name="cacheManager" ref="ehCacheManager"></property>
+    </bean>
+    
+    <!-- Freemarker -->
+    <bean id="freemarkerConfigurationManager"
+		class="com.systop.common.modules.template.freemarker.FreeMarkerConfigurationManager">
+		<property name="templateLoaderPaths">
+			<list>
+				<value>classpath:templates</value>
+				<value>classpath:com/systop/common/modules/security/user/webapp</value>				
+			</list>
+		</property>
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		
+		<property name="preferFileSystemAccess">
+		    <value>true</value>
+		</property>
+		
+	</bean>
+	
+	<!-- Lucene全文检索中文分词解析 -->
+	<bean id="chineseAnalyzer" class="org.apache.lucene.analysis.cn.ChineseAnalyzer"/>
+	
+	<bean id="sqlMapClientFactory" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+	   <description>
+	   
+	   </description>
+	   <property name="configLocations">
+	      <list>
+	          <value>classpath:sqlmap/sql-map-config.xml</value>
+	      </list>
+	   </property>
+	  
+	   <property name="mappingLocations">
+	       <list>
+	          <value>classpath*:datashare/seismic/**/sqlMap.xml</value>
+	       </list>
+	   </property>
+	   
+	</bean>
+	
+	<!-- 要调用的工作类 -->
+	<!-- <bean id="quartzJob" class="com.systop.scos.car.QuartzJob"></bean>
+	定义调用对象和调用对象的方法
+	<bean id="jobtask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		调用的类
+		<property name="targetObject">
+			<ref bean="quartzJob" />
+		</property>
+		调用类中的方法
+		<property name="targetMethod">
+			<value>work</value>
+		</property>
+	</bean> -->
+	
+	<!-- 定义触发时间 -->
+	<!-- <bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobtask" />
+		</property>
+		cron表达式
+		<property name="cronExpression">
+			<value>0 15 14 * * ?</value>
+		</property>
+	</bean> -->
+	
+	<!-- 定义工作提醒-->
+	<!-- <bean id="workTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+		<property name="targetObject"><bean class="com.systop.business.mywork.WorkTask"></bean></property>   
+		<property name="targetMethod"><value>execute</value></property>   
+	</bean>  
+	<bean id="doWorkTask" class="org.springframework.scheduling.quartz.CronTriggerBean">   
+		<property name="jobDetail"><ref bean="workTask"/></property>   
+		<property name="cronExpression"><value>0 0/2 * * * ?</value></property>   
+	</bean> -->
+	<!-- 检查委托期限-->
+	<bean id="consignor" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+		<property name="targetObject"><bean class="com.systop.business.jbpm.handler.CheckConsignor"></bean></property>   
+		<property name="targetMethod"><value>execute</value></property>   
+	</bean>  
+	<bean id="doConsignor" class="org.springframework.scheduling.quartz.CronTriggerBean">   
+		<property name="jobDetail"><ref bean="consignor"/></property>   
+		<property name="cronExpression"><value>0 0 0 * * ?</value></property>   
+	</bean>
+	<!--  
+	定义任务计划提醒
+	<bean id="planTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">   
+		<property name="targetObject"><bean class="com.systop.business.plan.PlanTask"></bean></property>   
+		<property name="targetMethod"><value>execute</value></property>   
+	</bean>  
+	<bean id="doPlanTask" class="org.springframework.scheduling.quartz.CronTriggerBean">   
+		<property name="jobDetail"><ref bean="planTask"/></property>   
+		<property name="cronExpression"><value>0 0/2 * * * ?</value></property>   
+	</bean> -->
+	
+	<!-- 执行类 -->
+	<!-- <bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="doTime" />
+				<ref bean="doWorkTask" />
+				<ref bean="doPlanTask" />
+				<ref bean="doConsignor"/>
+			</list>
+		</property>
+	</bean> -->
+
+</beans>

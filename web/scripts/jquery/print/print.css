@@ -1,0 +1,51 @@
+/*div.title {
+    width: 300px;
+    *//*margin: 0px auto;*//*
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 20px;
+    border-bottom: 3px double #99bbe8;
+    text-align: center;
+
+    margin-left:-150px;
+    left:50%;
+    position:relative;
+}*/
+/*td {
+    font-size:18px;
+    height: 36px;
+}*/
+
+/*input.underLine,span.underLine {
+    border: 0px;
+    text-align:right;
+    border-bottom: 1px solid #99bbe8;
+}*/
+
+/*需要手动的添加打印内容,这个宽度么其实700也不错*/
+.main-content-table{
+    width:725px;
+}
+
+table .tr-other,/*不需要显示的tr*/
+.btn-div,input.button,/*输入按钮*/
+.x-panel-header,/*标题栏*/
+.photo-original-link,.diary-img-div .photo-label/*图片的操作按钮*/
+{
+    display: none !important;
+}
+
+/*这个好像必须,否则ie打印不正常*/
+.x-panel-body{
+    width: auto !important;
+}
+
+
+/*一个页面打印两份*/
+.print-area-height{
+    height: 560px;
+}
+/*一个页面打印3份*/
+.print-area-height-2{
+    height: 370px;
+}

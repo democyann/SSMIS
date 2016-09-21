@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- Dept management -->
+	
+	<package name="admin.dept" extends="json" namespace="/systop/dept">
+	 	<action name="findDept" class="deptAction" method="findDept">
+			<result name="findDept" type="json">
+				<param name="root">result</param>
+			</result>
+	 	</action>
+	 	<action name="findDeptJum" class="deptAction" method="findDeptJum">
+			<result name="findDeptJum" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	 	
+	 	<action name="selectDeptJum" class="deptAction" method="selectDeptJum">
+			<result name="selectDeptJum" type="json">
+				<param name="root">result</param>
+			</result>
+	 	</action>
+		 <action name="index" class="deptAction" method="index">
+		    <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		 </action>
+		 <action name="deptTree" class="deptAction" method="deptTree">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		 <action name="allDeptTree" class="deptAction" method="allDeptTree">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		  <action name="deptTree1" class="deptAction" method="deptTree1">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		 <action name="deptTreeWork" class="deptAction" method="deptTreeWork">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		  <action name="deptTree2" class="deptAction" method="deptTree2">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		 
+		  <action name="deptTreeSeleectRadio" class="deptAction" method="deptTreeSeleectRadio">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		 
+		   <action name="deptTreeSeleectAllRadio" class="deptAction" method="deptTreeSeleectAllRadio">
+		     <result name="index" type="dispatcher">/pages/admin/dept/index.jsp</result>
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">depts</param>
+		    </result>
+		 </action>
+		 
+		  <action name="selectDept" class="deptAction" method="selectDept">
+		     <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">comDept</param>
+		    </result>
+		 </action>
+		 <action name="editNew" class="deptAction" method="editNew">
+		     <result name="input">/pages/admin/dept/edit.jsp</result>
+		 </action>
+		 <action name="edit" class="deptAction" method="edit">
+		     <result name="input">/pages/admin/dept/edit.jsp</result>
+		 </action>
+		 <action name="remove" class="deptAction" method="remove">
+		     <result name="success">/pages/admin/dept/index.jsp</result>
+		 </action>
+		 <action name="save" class="deptAction" method="save">
+		     <result name="success" type="redirect">index.do</result>
+		     <result name="input">/pages/admin/dept/edit.jsp</result>
+		 </action>
+		 <action name="updateDeptSerialNo" class="deptAction" method="updateSerialNo">
+		     <result name="success" type="redirect">index.do</result>
+		 </action>
+		 <action name="deptZtree" class="deptAction" method="deptZtree">
+		     <result type="json" name="ztree">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">ztreeStr</param>
+		    </result>
+		 </action>
+		 
+		 <action name="deptZtreeJg" class="deptAction" method="deptZtreeJg">
+		     <result type="json" name="ztree">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">ztreeStr</param>
+		    </result>
+		 </action>
+		 
+		 <action name="deptZtreeFs" class="deptAction" method="deptZtreeFs">
+		     <result type="json" name="ztree">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">ztreeStr</param>
+		    </result>
+		 </action>
+		 <action name="queryDeptBySubId" class="deptAction" method="queryDeptBySubId">
+		 	<result name="queryDeptBySubId" type="json">
+		 		<param name="root">depts</param>
+		 	</result>
+		 </action>
+		 <action name="updateDeptShr" class="deptAction" method="updateDeptShr">
+		 	<result name="updateDeptShr" type="json">
+		 		<param name="root"></param>
+		 		<param name="excludeProperties">
+				    .*\.roles.*\.permissions
+				    .*\.roles.*\.depts
+				    .*\.roles.*\.childRoles
+				    .*\.roles.*\.parentRole
+				    .*\.dept		    
+				</param>
+		 	</result>
+		 </action>
+		  <action name="*" class="deptAction" method="{1}">
+		  </action>
+	</package>
+	
+</struts>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin.subcompany" extends="json" namespace="/subcompany">
+		<action name="*" class="subCompanyAction" method="{1}">
+			<result name="index">/pages/admin/subCompany/index.jsp</result>
+			<result name="input">/pages/admin/subCompany/edit.jsp</result>
+			<result name="view">/pages/admin/subCompany/view.jsp</result>
+			<result name="success" type="redirect">index.do</result>
+			<result name="map">/pages/admin/subCompany/map.jsp</result>
+			<result name="allMap">/pages/admin/subCompany/allMap.jsp</result>
+			<result name="peopleSet">/pages/admin/subCompany/peopleset.jsp</result>
+			<result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">subCompanyList</param>
+		        <param name="totalProperty">totalProperty</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.name,
+					\[\d+\]\.descn
+				</param>
+		    </result>
+		    <result type="json" name="getSubUser">
+		        <param name="root">subMap</param>
+		    </result>
+		</action>
+	</package>
+</struts>

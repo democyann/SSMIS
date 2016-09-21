@@ -1,0 +1,49 @@
+body {
+	font-size: 12px;
+}
+
+.ui-layout-pane { /* all 'panes' */
+	background: #FFF;
+	border: 1px solid #97b7e7;
+	padding: 10px;
+	overflow: hidden;
+}
+
+.ui-layout-resizer { /* all 'resizer-bars' */
+	background: #ddecf7;
+}
+
+.ui-layout-toggler { /* all 'toggler-buttons' */
+	background: #97b7e7;
+}
+
+a:link {
+	color: #1d5987;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #1d5987;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF6600;
+	text-decoration: none;
+}
+
+a:actvie {
+	color: #FF6600;
+	text-decoration: none;
+}
+
+li.leaf {
+    overflow: hidden;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding:2px;
+}
+.tree-leaf {
+ background-image: url(images/plugin.gif);
+}

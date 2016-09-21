@@ -1,0 +1,10 @@
+/*fix number button  ie*/
+.dataTables_paginate span a{
+    top:1px\9;
+    height: 15px\9;
+}
+
+td.details {
+    background-color: #e6e6e6 !important;
+    border: 2px solid #A19B9E;
+}

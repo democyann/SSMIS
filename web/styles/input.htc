@@ -1,0 +1,12 @@
+<script language="javaScript">
+//取出checkbox边框
+switch(type)
+{
+  case 'checkbox':
+      style.border="0px solid #FF0000";
+      break;
+  case 'radio':
+      style.border="0px solid #FF0000";
+      break;
+}
+</script>

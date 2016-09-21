@@ -1,0 +1,37 @@
+.mousehand{
+    cursor:hand;
+}
+.titletable{
+    padding-left:5px;
+    background-color:#E9E9E9; }    
+table.TabBarLevel{
+}
+
+.PanelSelected{
+display:none;
+}
+.PanelHidden{
+display:"";
+}
+
+table.TabBarLevel td{
+border:1px solid #CCCCCC;
+height:20px;
+background-color:#E1E1E1;
+}
+table.TabBarLevel td.SelectedTab{
+border-bottom-width:0px;
+background-color:#ffffff;
+}
+table.TabBarLevel td.Black{
+border-left-width:0px;
+border-top-width:0px;
+border-right-width:0px;
+background-color:#FFFFFF;
+}
+table.Content{
+border-left:1px solid #CCCCCC;
+border-right:1px solid #CCCCCC;
+border-bottom:1px solid #CCCCCC;
+}
+.prompting {color: #FF0000}

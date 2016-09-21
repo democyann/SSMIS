@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>common</short-name>
+	<uri>systop/common</uri>
+	<tag>
+		<name>menu</name>
+		<tag-class>com.systop.common.modules.security.acegi.taglibs.MenuTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<name>hasMenu</name>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<name>role</name>
+		<tag-class>
+			com.systop.common.modules.security.acegi.taglibs.RoleTag
+		</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			A simple tag to output or not the body of the tag if the
+			principal has or doesn't have certain roles.
+		</description>
+		<attribute>
+			<name>ifNotGranted</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				A comma separated list of roles which the user must not
+				have for the body to be output.
+			</description>
+		</attribute>
+		<attribute>
+			<name>ifAllGranted</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				A comma separated list of roles which the user must all
+				possess for the body to be output.
+			</description>
+		</attribute>
+		<attribute>
+			<name>ifAnyGranted</name>
+			<rtexprvalue>true</rtexprvalue>
+			<description>
+				A comma separated list of roles, one of which the user
+				must possess for the body to be output.
+			</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>username</name>
+		<tag-class>
+			com.systop.common.modules.security.acegi.taglibs.DisplayUsernameTag
+		</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+	
+	<tag>
+		<name>ifLogin</name>
+		<tag-class>
+			com.systop.common.modules.security.acegi.taglibs.IfLoginTag
+		</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+	<tag>
+		<name>ifNotLogin</name>
+		<tag-class>
+			com.systop.common.modules.security.acegi.taglibs.IfNotLoginTag
+		</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+	<tag>
+    	<name>params</name>
+    	<tag-class>com.systop.core.webapp.taglibs.ParametersTag</tag-class>
+    	<body-content>JSP</body-content>
+    	<attribute>
+    		<name>includes</name>
+    		<type>java.lang.String</type>
+    		<description>A comma separated list of include paramters,can use * for pattern.</description>
+    	</attribute>
+    	<attribute>
+    		<name>type</name>
+    		<type>java.lang.String</type>
+    		<description>The optional input is 'queryString' or 'inputTag'</description>
+    	</attribute>
+    </tag>
+
+    <tag>
+        <name>escapeJSON</name>
+        <tag-class>
+            com.systop.core.taglibs.EscapeJSON
+        </tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>value</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

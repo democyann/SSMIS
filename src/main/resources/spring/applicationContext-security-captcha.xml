@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-lazy-init="true" default-autowire="byName">
+ <!-- 通道安全过滤器 -->
+    <bean id="channelProcessingFilter"
+          class="org.acegisecurity.securechannel.ChannelProcessingFilter">
+        <property name="channelDecisionManager">
+            <ref local="channelDecisionManager"/> 
+        </property>
+        <property name="filterInvocationDefinitionSource">
+            <value>
+                CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+                PATTERN_TYPE_APACHE_ANT
+                /j_security_check=REQUIRES_CAPTCHA_ONCE_ABOVE_THRESOLD_REQUESTS
+            </value>
+        </property>
+    </bean> 
+<!-- 通道安全管理器 -->
+    <bean id="channelDecisionManager"
+          class="org.acegisecurity.securechannel.ChannelDecisionManagerImpl">
+        <property name="channelProcessors">
+            <list>
+                <ref local="testOnceAfterMaxRequestsCaptchaChannelProcessor"/>
+                <ref local="alwaysTestAfterTimeInMillisCaptchaChannelProcessor"/>
+                <ref local="alwaysTestAfterMaxRequestsCaptchaChannelProcessor"/>
+                <ref local="alwaysTestBelowAverageTimeInMillisBetweenRequestsChannelProcessor"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- REQUIRES_CAPTCHA_ONCE_ABOVE_THRESOLD_REQUESTS -->
+    <bean id="testOnceAfterMaxRequestsCaptchaChannelProcessor"
+          class="org.acegisecurity.captcha.TestOnceAfterMaxRequestsCaptchaChannelProcessor">
+        <property name="thresold">
+            <value>0</value>
+        </property>
+        <property name="entryPoint">
+            <ref bean="captchaEntryPoint"/>
+        </property>
+    </bean>
+
+    <!-- REQUIRES_CAPTCHA_ABOVE_THRESOLD_REQUESTS -->
+    <bean id="alwaysTestAfterMaxRequestsCaptchaChannelProcessor"
+          class="org.acegisecurity.captcha.AlwaysTestAfterMaxRequestsCaptchaChannelProcessor">
+        <property name="thresold">
+            <value>5</value>
+        </property>
+        <property name="entryPoint">
+            <ref bean="captchaEntryPoint"/>
+        </property>
+    </bean>
+
+    <!-- REQUIRES_CAPTCHA_AFTER_THRESOLD_IN_MILLIS -->
+    <bean id="alwaysTestAfterTimeInMillisCaptchaChannelProcessor"
+          class="org.acegisecurity.captcha.AlwaysTestAfterTimeInMillisCaptchaChannelProcessor">
+        <property name="thresold">
+            <value>5000</value>
+        </property>
+        <property name="entryPoint">
+            <ref bean="captchaEntryPoint"/>
+        </property>
+    </bean>
+
+    <!-- REQUIRES_CAPTCHA_BELOW_AVERAGE_TIME_IN_MILLIS_REQUESTS -->
+    <bean
+            id="alwaysTestBelowAverageTimeInMillisBetweenRequestsChannelProcessor"
+            class="org.acegisecurity.captcha.AlwaysTestBelowAverageTimeInMillisBetweenRequestsChannelProcessor">
+        <property name="thresold">
+            <value>20000</value>
+        </property>
+        <property name="entryPoint">
+            <ref bean="captchaEntryPoint"/>
+        </property>
+    </bean>
+
+    <bean id="captchaEntryPoint"
+          class="org.acegisecurity.captcha.CaptchaEntryPoint">
+        <property name="captchaFormUrl">
+            <value>/login.jsp?login_error=code_error</value>
+        </property>
+        <property name="includeOriginalRequest">
+            <value>false</value>
+        </property>
+        <property name="includeOriginalParameters">
+            <value>false</value>
+        </property>
+    </bean>
+
+    <bean id="captchaValidationProcessingFilter"
+          class="org.acegisecurity.captcha.CaptchaValidationProcessingFilter">
+        <property name="captchaService">
+            <ref bean="captchaService"/>
+        </property>
+        <property name="captchaValidationParameter" value="j_captcha_response"/>
+    </bean>
+
+    <!-- imageCaptchaService is injected into captchaImageCreateController as well as to captchaService beans -->
+    <bean id="captchaService" class="com.systop.common.modules.security.jcaptcha.JCaptchaServiceProxyImpl">
+        <property name="jcaptchaService" ref="imageCaptchaService"/>
+    </bean>
+
+    <bean id="imageCaptchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+        <constructor-arg type="com.octo.captcha.service.captchastore.CaptchaStore" index="0">
+            <ref bean="fastHashMapCaptchaStore"/>
+        </constructor-arg>
+        <!-- (1) which captcha Engine you use -->
+        <constructor-arg type="com.octo.captcha.engine.CaptchaEngine" index="1">
+            <ref bean="captchaEngineEx"/>
+        </constructor-arg>
+        <constructor-arg index="2">
+            <value>180</value>
+        </constructor-arg>
+        <constructor-arg index="3">
+            <value>100000</value>
+        </constructor-arg>
+        <constructor-arg index="4">
+            <value>75000</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="fastHashMapCaptchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore"/>
+
+    <!-- (2) you can define more than one captcha engine here -->
+    <bean id="captchaEngineEx"
+          class="com.systop.common.modules.security.jcaptcha.engine.CaptchaEngineEx"/>
+
+</beans>

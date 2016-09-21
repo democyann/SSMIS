@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dwr>
+   	<allow>
+   		<create javascript="ResourceAction" creator="spring">
+   	         <param name="beanName" value="resourceAction" ></param>
+   	    </create>
+   	    
+  	    <convert converter="bean"  match="com.systop.common.core.dao.support.Page"  />
+   	    <convert converter="bean"  match="com.systop.common.core.webapp.ajax.RemoteQueryParams"></convert>
+   	    <convert converter="bean"  match="com.systop.common.modules.security.user.model.Role"  />
+   	    <convert converter="bean"  match="com.systop.common.modules.security.user.model.User"  />
+   	    <convert converter="bean"  match="com.systop.common.modules.security.user.model.Resource" />
+   	    <convert converter="bean"  match="com.systop.common.modules.security.user.model.Permission"  />
+   	    <convert converter="bean"  match="com.systop.common.modules.dept.model.Dept"  />
+   	    <convert converter="map"   match="java.util.Map" />
+	</allow>
+
+
+	<signatures>
+		<![CDATA[
+        import java.util.Map;
+        ]]>
+	</signatures>
+</dwr>

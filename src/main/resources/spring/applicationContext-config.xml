@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans default-lazy-init="false">
+	<description>配置各种常量,初始化系统等</description>
+	<!-- 初始化Admin账户、角色 -->
+	<bean id="userInitializer" class="com.systop.common.modules.init.UserInitializer">
+		<property name="adminName" value="Administrator"></property>
+		<property name="adminPwd" value="manager"></property>
+		<property name="adminDesc" value="系统管理员"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin.security" extends="json" namespace="/security">
+		<action name="*/*" class="{1}Action" method="{2}">
+			<result name="index">/pages/admin/security/{1}/index.jsp</result>
+			<result name="olIndex">/pages/admin/security/{1}/ol/index.jsp</result>
+		    <result name="input">/pages/admin/security/{1}/edit.jsp</result>
+		    <result name="view">/pages/admin/security/{1}/view.jsp</result>
+		    <result name="showUser">/pages/admin/security/{1}/show.jsp</result>
+		    <result name="levelOfUser">/pages/admin/security/{1}/editLevel.jsp</result>
+		    <result name="indexLevel">/pages/admin/security/{1}/indexLevel.jsp</result>
+		   <result name="roleIndex" type="redirect">{1}/index.do</result>
+		    <!--
+		    <result name="success" type="chain">{1}/index</result>
+		    -->
+		    <result name="editSelfRemovePhoto" type="redirect">{1}/editSelf.do</result>
+		    <result name="success" type="redirect">{1}/index.do</result>
+		    <result name="delete" type="redirect">{1}/index.do?jinggao=${jinggao}</result>
+		    <result name="initpass" type="redirect">{1}/index.do?jinggao=${jinggao}</result>
+		    <result name="toindexLevel" type="redirect">{1}/indexLevel.do</result>
+		    <result name="success2" type="redirect">/enterpriseext/showUsers.do</result>
+		    <result name="changePassword">/pages/admin/security/user/changePassword.jsp</result>
+		    <result name="treeIndex">/pages/admin/security/menu/treeIndex.jsp</result>
+		    <result type="json" name="json">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">page</param>
+				<param name="excludeProperties">
+				    .*\.roles.*\.permissions
+				    .*\.roles.*\.depts
+				    .*\.roles.*\.childRoles
+				    .*\.roles.*\.parentRole
+				    .*\.dept		    
+				</param>
+		    </result>
+		    <result type="json" name="queryUserByDept">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">page</param>
+				<param name="excludeProperties">
+				    .*\.roles.*\.permissions
+				    .*\.roles.*\.depts
+				    .*\.roles.*\.childRoles
+				    .*\.roles.*\.parentRole
+				    .*\.dept		    
+				</param>
+		    </result>
+		    <result type="json" name="queryUserBySub">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">page</param>
+				<param name="excludeProperties">
+				    .*\.roles.*\.permissions
+				    .*\.roles.*\.depts
+				    .*\.roles.*\.childRoles
+				    .*\.roles.*\.parentRole
+				    .*\.dept		    
+				</param>
+		    </result>
+		    <result type="json" name="jsonRst">
+		   		<param name="root">checkResult</param>
+			</result>
+		    <result type="json" name="tree">
+		        <param name="ignoreHierarchy">false</param>
+		        <param name="root">userTree</param>				
+		    </result>
+		    	<result name="savePermission" type="json">
+				<param name="root">jsonMsg</param>
+			</result>
+			<result name="rootPermission" type="json">
+				<param name="root">root_permission</param>
+			</result>
+			<result name="permissionList">
+			/pages/admin/security/{1}/perindex.jsp
+			</result>
+            <result name="resetPassword">${1}/resetPassword.do</result>
+            <result name="updateStatus" type="json">
+                <param name="root">result</param>
+            </result>
+            <result name="indexCompany">/pages/admin/security/{1}/subIndex.jsp</result>
+            <result type="json" name="auditUser">
+            	 <param name="ignoreHierarchy">false</param>
+		        <param name="root">auditUser</param>
+		        <param name="includeProperties">
+					\[\d+\]\.id,
+				   \[\d+\]\.name
+				</param>				
+		    </result>
+		    <result type="json" name="jsonMenu">
+		    	<param name="ignoreHierarchy">false</param>
+		        <param name="root">menus</param>
+		    </result>
+		</action>
+	</package>
+	
+	<!-- 密码维护 -->
+	<package name="password" extends="default" namespace="/password">
+		<action name="modifyPassword">
+			<result>/pages/admin/security/user/password/modifyPassword.jsp</result>
+		</action>
+		<action name="changePassword" class="userAction" method="changePassword">
+			<result name="input">/pages/admin/security/user/password/modifyPassword.jsp</result>
+			<result name="success">/pages/admin/security/user/password/modifySuccess.jsp</result>
+		</action>
+	</package>
+
+	<!-- 用户选择 -->
+	<package name="userselector" extends="json" namespace="/userselector">
+		<action name="*" class="userSelectAction" method="{1}">
+			<result name="index">/pages/admin/security/user/selector/index.jsp</result>
+			<result name="onlycheck">/pages/admin/security/user/selector/indexonly.jsp</result>
+			<result name="onlyRadiocheck">/scripts/selectUser/selectAllRadioUser/indexonly.jsp</result>
+			<result name="onlyRadiocheckAll">/scripts/selectUser/selectAllUser/indexonly.jsp</result>
+			<result name="showSkypeUser">/pages/admin/security/user/skype/showSkypeUser.jsp</result>
+			<result name="selectUser">/pages/scos/asset/selectCs.jsp</result>
+			<result name="checkuser" type="json">
+				<param name="root">optionMsg</param>
+			</result>
+
+			<result name="selected_users" type="json">
+				<param name="root">selectedUsersMap</param>
+			</result>
+		</action>
+	</package>
+</struts>
+

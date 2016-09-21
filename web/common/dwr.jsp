@@ -1,0 +1,1 @@
+<script type="text/javascript" src="${ctx}/scripts/dwrjs/dwr.js"></script>

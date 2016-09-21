@@ -1,0 +1,2 @@
+<link type="text/css" href="${ctx}/scripts/jquery/ui/jquery-ui-1.8.24.redmondm.css" rel="stylesheet" />
+<script type="text/javascript" src="${ctx}/scripts/jquery/ui/jquery-ui-1.8.24.full.min.js"></script>

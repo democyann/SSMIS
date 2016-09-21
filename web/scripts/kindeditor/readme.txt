@@ -1,0 +1,1 @@
+version:kindeditor-4.0.5

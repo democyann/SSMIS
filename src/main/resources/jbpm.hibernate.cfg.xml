@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+<!--   	<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property> -->
+<!--     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property> -->
+<!--     <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433; DatabaseName=business</property> -->
+<!--     <property name="hibernate.connection.username">sa</property> -->
+<!--     <property name="hibernate.connection.password">123456</property> -->
+
+
+    <mapping resource="jbpm.repository.hbm.xml" />
+    <mapping resource="jbpm.execution.hbm.xml" />
+    <mapping resource="jbpm.history.hbm.xml" />
+    <mapping resource="jbpm.task.hbm.xml" />
+    <mapping resource="jbpm.identity.hbm.xml" />
+  </session-factory>
+</hibernate-configuration>
