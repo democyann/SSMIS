@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="test" extends="json"  namespace="/test">
+		<action name="*" class="testAction" method="{1}">
+			<result name="index">/pages/test/index.jsp</result>
+			<result name="edit">/pages/test/testedit.jsp</result>
+			<result name="success" type="redirect">index.do</result>
+			<result name="json" type="json"></result>
+		</action>
+	</package>
+</struts>
